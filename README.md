@@ -16,8 +16,10 @@ Users sign up for an account via Google OAuth to identify users individually, ra
 ## Table of Contents
 
 ## Relationship between Node and Express
+Node is a JS runtime environment that is used to execute code outside of the browser.  Express is a library that runs in the Node runtime.  Node could handle everything directly, but Express has helpers to make dealing with HTTP traffic easier.
 
 ## Generating Express Apps
 
-## Express Route Handlers
 
+## Express Route Handlers
+Express API contains business logic to take incoming requests from React/Node application, pull information from MongoDB, and send information back to React application - React does not communciate directly with MongoDB.  Express API and React app will communicate entirely through HTTP requsts.  Express and MongoDB will communicate via an internal method.
