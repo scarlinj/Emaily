@@ -1,4 +1,4 @@
-// Heroku muse use the Node version installed on local machine: declare the node and npm version in package.json (use node -v and npm -v to find current version)
+// Heroku muse use the Node and npm version installed on local machine: declare the node and npm version in package.json (use node -v and npm -v to find current version)
 const express = require ('express');
 const app = express();
 
