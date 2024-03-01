@@ -22,6 +22,14 @@ Render Link: emaily-jecn.onrender.com/
 ## Relationship between Node and Express
 Node is a JS runtime environment that is used to execute code outside of the browser.  Express is a library that runs in the Node runtime.  Node could handle everything directly, but Express has helpers to make dealing with HTTP traffic easier.
 
+PassportJS handles the routes in the OAuth flow to forward users' requests to Google, Google's response to grant permission, send the code from the URL to Google servers, receive Google's reply with details about the user.  Two common issues are:
+
+    (1) Passport requires us to add extra code during some of these steps, causing disruptions in the process that is intended to be fully automated
+    (2) The Passport library is structured into two different libraries: passport, which generates helpers for handling authorization in Express applications, and passport strategy, which generates helpers for authentication with one specific method (email/password, Google, Facebook, etc.), and you must install each one separately.  This app uses only Google, so it only uses one passport strategy.
+
+## Google OAuth
+Google OAuth recommends using either OAuth1 or OAuth 20, so we will use OAuth20.
+
 ## Generating Express Apps
 
 
