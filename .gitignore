@@ -1,4 +1,5 @@
 node_modules
 credentials.txt
 keys.js
-dotenv
+.env
+27 - Breakdown of request.txt

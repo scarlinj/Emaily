@@ -34,7 +34,7 @@ PassportJS handles the routes in the OAuth flow to forward users' requests to Go
     (2) The Passport library is structured into two different libraries: passport, which generates helpers for handling authorization in Express applications, and passport strategy, which generates helpers for authentication with one specific method (email/password, Google, Facebook, etc.), and you must install each one separately.  This app uses only Google, so it only uses one passport strategy.
 
 ## Google OAuth
-Google OAuth recommends using either OAuth1 or OAuth 20, so we will use OAuth20.
+Google OAuth recommends using either OAuth1 or OAuth20, so we will use OAuth20.
 
 ## Generating Express Apps
 

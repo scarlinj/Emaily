@@ -1,6 +1,7 @@
 // Heroku muse use the Node and npm version installed on local machine: declare the node and npm version in package.json (use node -v and npm -v to find current version)
 const express = require('express');
 const passport = require('passport');
+// require('dotenv').config;
 
 // Google OAuth20 has various properties.  We only need Strategy for this app.
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -13,13 +14,15 @@ const app = express();
 passport.use(
     new GoogleStrategy(
         {
-            ClientID: keys.googleClientID,
+            clientID: keys.googleClientID,
             clientSecret: keys.googleClientSecret,
-            // route to send users after they grant access to application
+            // give Passport the below route to send users after they grant access to application
             callbackURL: '/auth/google/callback'
         }, 
-            (accessToken) => {
-                console.log(accessToken);
+            (accessToken, refreshToken, profile, done) => {
+                console.log('access token', accessToken);
+                console.log('refresh token', refreshToken);
+                console.log('profile: ', profile)
         }
     )
 );
@@ -33,9 +36,16 @@ app.get(
     '/auth/google', 
     // haven't defined "google" below, but passport knows this is an inherent property of GoogleStrategy already
     passport.authenticate('google', {
-        // google already has list of scopes or permissions we can ask from a user account - use the below
+        // google already has list of scopes or permissions we can ask from a user account - use the below, for now
         scope: ['profile', 'email']
-}))
+},
+console.log('running index.js')
+));
+
+app.get(
+    '/auth/google/callback', 
+    passport.authenticate('google')
+);
 
 // use environment (env) variable to assign port, since Heroku will assign the port and it cannot be predicted.  If in development environment, or if no PORT assigned, will use default PORT 5000
 const PORT = process.env.PORT || 5000;
