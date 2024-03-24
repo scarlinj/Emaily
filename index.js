@@ -14,10 +14,11 @@ const app = express();
 passport.use(
     new GoogleStrategy(
         {
+            // format below does not work.  Try importing variables
             clientID: keys.googleClientID,
             clientSecret: keys.googleClientSecret,
             // give Passport the below route to send users after they grant access to application
-            callbackURL: '/auth/google/callback'
+            callbackURL: 'api/auth/google/callback'
         }, 
             (accessToken, refreshToken, profile, done) => {
                 console.log('access token', accessToken);
