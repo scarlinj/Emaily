@@ -12,16 +12,18 @@ const app = express();
 // new GoogleStrategy creates new instance of Google Strategy for users to authenticate themselves inside of application
 // console.developers.google.com
 passport.use(
+    // GoogleStrategy has an internal identifier called "google" - use this in passport authentication
     new GoogleStrategy(
         {
             // format below does not work.  Try importing variables
             clientID: keys.googleClientID,
             clientSecret: keys.googleClientSecret,
             // give Passport the below route to send users after they grant access to application
-            callbackURL: 'api/auth/google/callback'
+            callbackURL: '/auth/google/callback'
         }, 
             (accessToken, refreshToken, profile, done) => {
                 console.log('access token', accessToken);
+                // access token expires after a certain amount of time.  Refresh token automatically updates access token.
                 console.log('refresh token', refreshToken);
                 console.log('profile: ', profile)
         }
@@ -39,14 +41,16 @@ app.get(
     passport.authenticate('google', {
         // google already has list of scopes or permissions we can ask from a user account - use the below, for now
         scope: ['profile', 'email']
-},
-console.log('running index.js')
-));
+})
+// console.log('running index.js')
+);
 
 app.get(
     '/auth/google/callback', 
     passport.authenticate('google')
 );
+
+// redirect for http://localhost:5000/auth/api/auth/google/callback is not allowed ("redirect URI mismatch") - assign this below to allow
 
 // use environment (env) variable to assign port, since Heroku will assign the port and it cannot be predicted.  If in development environment, or if no PORT assigned, will use default PORT 5000
 const PORT = process.env.PORT || 5000;
