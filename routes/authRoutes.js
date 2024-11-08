@@ -9,6 +9,9 @@ module.exports = app => {
         app.get(
         '/auth/google', 
         // haven't defined "google" below, but passport knows this is an inherent property of GoogleStrategy already
+        // using Google to give users a unique ID, stored in MongoDB, to identify their user.  MongoDB stores list of users in db.  
+        // OAuth only gives us the GoogleID, which is all we care about to ID users
+        // Everything else about user besides the GoogleID is stored in db
         passport.authenticate('google', {
             // google already has list of scopes or permissions we can ask from a user account - use the below, for now
             scope: ['profile', 'email']

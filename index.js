@@ -1,6 +1,17 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const keys = require('./config/keys');
+// must call the User model before passport, to be able to define the User model model that we use in passport
+require('./models/User');
 // Do not need to assign the passport file below to use specific functions - just need these functions available to use
 require('./services/passport');
+
+
+// to connect to MongoDB, use the standard MongoDB URI
+// Use Mongoose to create a "model class" that automatically creates a collection of records inside of MongoDB
+// with this model, user ID saved to the "users" collection
+// models are saves in the "models" folder
+mongoose.connect(keys.mongoURI);
 
 const app = express();
 
