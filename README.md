@@ -59,4 +59,3 @@ Use OAuth to log in users.  Google OAuth recommends using either OAuth1 or OAuth
 ## Express Route Handlers
 Express API contains business logic to take incoming requests from React/Node application, pull information from MongoDB, and send information back to React application - React does not communciate directly with MongoDB.  Express API and React app will communicate entirely through HTTP requsts.  Express and MongoDB will communicate via an internal method.
 
-## MongoDB

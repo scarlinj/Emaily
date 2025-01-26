@@ -6,10 +6,12 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const userSchema = new Schema ({
-    // track more properties here, as needed
+    // Schema objest will define all properties user will have
+    // Track more properties here, as needed
     googleId: String
 });
 
+// load the Schema into mongoose to use in passport.js service
 // mongoose will only create record if it does not exist
 mongoose.model('users', userSchema);
 
