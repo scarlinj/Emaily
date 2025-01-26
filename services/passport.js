@@ -23,11 +23,13 @@ passport.use(
             clientID: keys.googleClientID,
             clientSecret: keys.googleClientSecret,
             // give Passport the below route to send users after they grant access to application
-            callbackURL: '/auth/google/callback'
+            // You must use the full URL here, or you will get an error
+            callbackURL: 'http://localhost:5000/auth/google/callback'
         }, 
+            // the "done" callback tells passport that the query is complete and it does not need to find or create a user, so it can resume authentication process
             (accessToken, refreshToken, profile, done) => {
                 // console.log('access token', accessToken);
-                // // access token expires after a certain amount of time.  Refresh token automatically updates access token.
+                // access token expires after a certain amount of time.  Refresh token automatically updates access token.
                 // console.log('refresh token', refreshToken);
                 // console.log('profile: ', profile)
 
@@ -35,18 +37,20 @@ passport.use(
 
                 // Initiate a search over all the records in the collection.
                 // Look through User's collection, find the first record inside collection with a GoogleId of profileId
-                User.findOne({ googleId: profile.id })
-                    .then((existingUser) => {
+                User.findOne({ googleId: profile.id }).then((existingUser) => {
                         // if no user has googleId of profileId
                         if(existingUser) {
                             // have record with a given profileId
+                            done(null, existingUser);
                         } else {
                             // we don't have record with a given profileId, so make a new record
                             // create a new user model instance with a googleId of profile.id
                             // to get the model instance to persist to MongoDB, add ".save();" at end
-                        new User({ googleId: profile.id }).save();
+                            new User({ googleId: profile.id })
+                            .save()
+                            .then(user => done(null, user));
                     }
-                })
+                });
             }
     )
 );

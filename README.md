@@ -51,7 +51,7 @@ MongoDB internally stores records in different collections.  These collections c
 This app uses a remote service to host an instance of MongoDB, instead of running one locally.
 
 ## Google OAuth
-Use OAuth to log in users.  Google OAuth recommends using either OAuth1 or OAuth20, so we will use OAuth20.  This chooses an identifying piece of information from a Google profile as a unique identifyer for a user.  More than one e-mail can be associated with a profile, so we cannot use the e-mail address alone.
+Use OAuth to log in users, rather than a user/password combination.  This makes the user experience much smoother and easier to jump in.  Google OAuth recommends using either OAuth1 or OAuth20, so we will use OAuth20.  This chooses an identifying piece of information from a Google profile as a unique identifyer for a user.  More than one e-mail can be associated with a profile, so we cannot use the e-mail address alone.
 
 ## Generating Express Apps
 
