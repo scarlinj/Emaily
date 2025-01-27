@@ -19,6 +19,7 @@ const User = mongoose.model('users');
 // console.developers.google.com
 passport.use(
     // GoogleStrategy has an internal identifier called "google" - use this in passport authentication
+
     new GoogleStrategy(
         {
             // format below does not work.  Try importing variables
@@ -47,12 +48,13 @@ passport.use(
                         done(null, existingUser);
                     } else {
                         // we don't have record with a given profileId, so make a new record
-                        // create a new user model instance with a googleId of profile.id
-                        // to get the model instance to persist to MongoDB, add ".save();" at end
+                        // create a new user model instance "User" (Uppercase) with a googleId of profile.id
                         new User({ googleId: profile.id })
+                        // to get the model instance to persist to MongoDB, add ".save();" at end
                         .save()
                         // second argument user, who was just saved
                         // we make use of this second user below inside of the promise callback, since we may have made additional changes since the original User
+                        // save the instance above, then in the callback below, we get another model instance of "user" (lowercase)
                         .then(user => done(null, user));
                     }
                 });
