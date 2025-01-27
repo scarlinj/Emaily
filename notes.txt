@@ -1,1 +1,5 @@
 User creation for User.js model created duplicate users 11-12-2024.  This is expected, per the lesson 41 and 42.
+
+1/25/25: have error for "OAuth Strategy requires a verify callback.  Online shows this may be an issue with parentheses placement, but it looks right.  Other problem?
+        When you fix this, commit to git and start a new branch for new features
+        - Verify callback is required to be able to verify the access tokens added by the user to call the API.

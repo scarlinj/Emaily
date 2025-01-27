@@ -1,5 +1,8 @@
 const express = require('express');
 const session = require('express-session');
+const passport = require('passport');
+// GoogleStrategy instructs OAuth exactly how to authenticate users
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 // must call the User model before passport, to be able to define the User model model that we use in passport

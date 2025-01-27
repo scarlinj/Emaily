@@ -1,10 +1,14 @@
 const passport = require('passport');
+// Google OAuth20 has various properties.  We only need Strategy for this app.
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 module.exports = app => {
     // send request using "app" - app.get (get info), app.post (send info), put (update all properties of something), delete )(delete something), patch (update one or two properties)
     // app.get('/', (req, res) => {
     //     res.send({ bye: 'buddy' });
     // });
+
+
 
         app.get(
         '/auth/google', 
