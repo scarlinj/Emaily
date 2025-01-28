@@ -28,5 +28,14 @@ module.exports = app => {
     app.get(
         '/auth/google/callback', 
         passport.authenticate('google')
+    );
+
+    // API route to return user currently logged into application
+    // use req and res objects as arguments for the below function
+    app.get(
+        '/api/current_user', (req, res) => {
+            // immediately send back requested user, to make sure they have access to user
+            res.send(req.user);
+        }
     )
 };
