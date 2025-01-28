@@ -6,7 +6,7 @@ const passport = require('passport');
 // require('dotenv').config;
 const session = require('express-session');
 
-// Google OAuth20 has various properties.  We only need Strategy for this app.
+// Google OAuth20 has various properties.  We only need Strategy for this app.  GoogleStrategy instructs OAuth exactly how to authenticate users.
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
@@ -34,7 +34,7 @@ passport.deserializeUser((id, done) => {
         });
 });
 
-// make ure passport is aware it will need to use cookies to keep track of currently assigned user
+// make sure passport is aware it will need to use cookies to keep track of currently assigned user
 
 
 // instruct passport to handle authentication specific to Google strategy - users can use this to authenticate themselves inside the application
