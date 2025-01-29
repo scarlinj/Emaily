@@ -6,7 +6,8 @@ User creation for User.js model created duplicate users 11-12-2024.  This is exp
 
 1/27/25: enabled cookies inside application, then told passport to use cookies to manage authentication.
 
-1/28/25: tested Authentication flow successfully: tauth routes in routes.  localhost:5000/auth/google/callback doesn't load, but it creates a cookie for the current user
+1/28/25: Completed authentication flow.  Tested authentication flow successfully: auth routes in routes.  localhost:5000/auth/google/callback doesn't load, but it creates a cookie for the current user
         This is expected - haven't properly handled request yet.  Just testing route to create cookie.  This works, so you can continue.
         when you load http://localhost:5000/api/current_user, you see details of the user model exactly as it exists inside of application.  
         Still recieve an OAuth error in terminal for "parseErrorResponse"
+        Added logout route and it works correctly.
