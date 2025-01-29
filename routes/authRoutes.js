@@ -8,9 +8,7 @@ module.exports = app => {
     //     res.send({ bye: 'buddy' });
     // });
 
-
-
-        app.get(
+    app.get(
         '/auth/google', 
         // haven't defined "google" below, but passport knows this is an inherent property of GoogleStrategy already
         // using Google to give users a unique ID, stored in MongoDB, to identify their user.  MongoDB stores list of users in db.  
@@ -29,6 +27,15 @@ module.exports = app => {
         '/auth/google/callback', 
         passport.authenticate('google')
     );
+
+    // add route handler to log out
+    app.get(
+        '/api/logout', (req, res) => {
+            // kill userId within user cookie to log out
+            req.logout();
+            // acknowledge to user that they are no longer signed in - below will say "null" or "no content" or similar
+            res.send(req.user);
+        });
 
     // API route to return user currently logged into application
     // use req and res objects as arguments for the below function
