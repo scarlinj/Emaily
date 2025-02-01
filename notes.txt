@@ -11,3 +11,7 @@ User creation for User.js model created duplicate users 11-12-2024.  This is exp
         when you load http://localhost:5000/api/current_user, you see details of the user model exactly as it exists inside of application.  
         Still recieve an OAuth error in terminal for "parseErrorResponse"
         Added logout route and it works correctly.
+
+1/29/2025:
+        Middlewares in passport.js (coookie-session, passport, deserialize user) allow us to make multiple requests without needing to add logic at top of every route handler.
+        Can wire up middlewares once, then be used for every requst in the application.
