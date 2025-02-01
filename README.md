@@ -16,6 +16,7 @@ MongoDB
 Google OAuth
 Generating Express Apps
 Express Route Handlers
+Server Host
 Future Development
 
 ## Technologies Used
@@ -61,6 +62,9 @@ If the application shows an error for OAuth2Strategy, investigate in Google Clou
 
 ## Express Route Handlers
 Express API contains business logic to take incoming requests from React/Node application, pull information from MongoDB, and send information back to React application - React does not communciate directly with MongoDB.  Express API and React app will communicate entirely through HTTP requsts.  Express and MongoDB will communicate via an internal method.
+
+## Server Host
+I created this with both a Render free website and a Heroku (formally free) website.  Since the Heroku site is not free and this is simply a test site for learning, then I will try to migrate away from Heroku.  When I am able to load this in Render successfully, I will no longer update the Heroku site, so that may not be available after time.
 
 ## Future Development
 This currently includes only a Google authentication strategy.  In the future, this site can also include other authentication strategies (LinkedIn, Github, etc.).  I will need to follow the same process as GoogleOAuth, but use those sites instead.
