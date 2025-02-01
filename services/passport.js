@@ -50,7 +50,12 @@ passport.use(
             clientSecret: keys.googleClientSecret,
             // give Passport the below route to send users after they grant access to application
             // You must use the full URL here, or you will get an error
-            callbackURL: '/auth/google/callback'
+            // using just "/auth/google/callback" will get an error because it is is a relative callback (GoogleStrategy fills in a default site)
+            // issue with relative callback is that it populates an http site, rather than https.  The site we deploy is https.
+            // relative callbacks are useful in development, but have issues in production
+            callbackURL: '/auth/google/callback',
+            // tell GoogleStrategy to trust the proxy that Heroku uses to communicate
+            proxy: true
         }, 
             // the below callback function includes the "done" callback tells passport that the query is complete and it does not need to find or create a user, so it can resume authentication process
             (accessToken, refreshToken, profile, done) => {
