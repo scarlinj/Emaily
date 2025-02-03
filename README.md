@@ -4,6 +4,7 @@ Welcome to Emaily!  This is an application for product owners to automatically o
 Users sign up for an account via Google OAuth to identify users individually, rather than creating an account, then they can pay for e-mail credits with Stripe.  Site owners can then create a "campaign" or survey to send to their users for feedback collection.  Inside this e-mail is a simple link to collect feedback.  The service will tabulate that feedback into a report for Site owenrs to analyze data.
 
 Heroku Link: https://emaily-frozen-lake-27026-c8f7077b9dd1.herokuapp.com/
+Render Link: https://emaily-jecn.onrender.com/
 
 The Render link is hosted on Render's free tier, which will wind down with inactivity, so requests may be delayed by 50 seconds or more.
 Render Link: emaily-jecn.onrender.com/

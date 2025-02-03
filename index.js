@@ -36,4 +36,4 @@ require('./routes/authRoutes')(app);
 
 // use environment (env) variable to assign port, since Heroku will assign the port and it cannot be predicted.  If in development environment, or if no PORT assigned, will use default PORT 5000
 const PORT = process.env.PORT || 5000;
-app.listen(PORT);
+app.listen(process.env.PORT);
